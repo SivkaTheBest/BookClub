@@ -1,0 +1,15 @@
+users:
+  - !!models.User
+    login:       Kolas
+    password:    secret
+  - !!models.User
+    login:       Bubno
+    password:    secret
+
+books:
+  - !!models.Book
+    name:        Harry Potter
+    author:      J. Rowling
+  - !!models.Book
+    name:        Neznayka
+    author:      Chuvak
