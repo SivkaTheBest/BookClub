@@ -1,7 +1,31 @@
+.users {
+     display: inherit;
+     width: 50%;
+     border: 1px solid aquamarine;
+     padding: 5px;
+ }
+
 .user {
     color: black;
-    font-size: 22px;
     background: blanchedalmond;
-    padding: 5px;
+    padding: 2px;
+    margin: 2px;
     display: inline-block;
+    width: 100px;
+    height: 100px;
+}
+
+.user-ava {
+    display: block;
+    margin: auto;
+    height: auto;
+    width: 80%;
+}
+
+.user-label {
+    font-size: 18px;
+    font-family: cursive;
+    text-align: center;
+    display: block;
+    margin: auto;
 }

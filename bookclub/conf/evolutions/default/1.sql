@@ -12,6 +12,8 @@ create table book (
 
 create table rating (
   id                        bigint not null,
+  user                      bigint,
+  book                      bigint,
   rating                    integer,
   constraint pk_rating primary key (id))
 ;
@@ -29,6 +31,10 @@ create sequence rating_seq;
 
 create sequence user_seq;
 
+alter table rating add constraint fk_rating_user_1 foreign key (user) references user (id) on delete restrict on update restrict;
+create index ix_rating_user_1 on rating (user);
+alter table rating add constraint fk_rating_book_2 foreign key (book) references book (id) on delete restrict on update restrict;
+create index ix_rating_book_2 on rating (book);
 
 
 

@@ -5,6 +5,18 @@ users:
   - !!models.User
     login:       Bubno
     password:    secret
+  - !!models.User
+    login:       Yura
+    password:    secret
+  - !!models.User
+    login:       Olya
+    password:    secret
+  - !!models.User
+    login:       Rostik
+    password:    secret
+  - !!models.User
+    login:       Ruslan
+    password:    secret
 
 books:
   - !!models.Book
