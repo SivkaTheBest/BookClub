@@ -11,11 +11,7 @@ import java.util.List;
 
 @Entity
 public class User extends Model {
-
     @Id
-    @Column(name = "id")
-    public Long id;
-
     @Column(name = "login")
     public String login;
 
@@ -29,6 +25,10 @@ public class User extends Model {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public static User authenticate(String login, String password) {
+        return User.find.where().eq("login", login).eq("password", password).findUnique();
     }
 
     public static Finder<Long, User> find = new Finder<Long, User>(

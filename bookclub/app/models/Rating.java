@@ -15,7 +15,7 @@ public class Rating extends Model {
     public Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "user", referencedColumnName = "login")
     public User user;
 
     @ManyToOne
@@ -25,7 +25,7 @@ public class Rating extends Model {
     @Constraints.Max(10)
     public int rating;
 
-    public static Finder<Long, Rating> find = new Finder<Long, Rating>(
-            Long.class, Rating.class
+    public static Finder<String, Rating> find = new Finder<String, Rating>(
+            String.class, Rating.class
     );
 }
