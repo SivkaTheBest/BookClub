@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import java.util.LinkedList;
 import java.util.List;
 
 @Entity
@@ -20,7 +21,7 @@ public class User extends Model {
     public String password;
 
     @OneToMany(mappedBy = "user")
-    List<Rating> ratings;
+    public List<Rating> ratings = new LinkedList<>();
 
     public User(String login, String password) {
         this.login = login;
@@ -31,7 +32,7 @@ public class User extends Model {
         return User.find.where().eq("login", login).eq("password", password).findUnique();
     }
 
-    public static Finder<Long, User> find = new Finder<Long, User>(
-            Long.class, User.class
+    public static Finder<String, User> find = new Finder<String, User>(
+            String.class, User.class
     );
 }

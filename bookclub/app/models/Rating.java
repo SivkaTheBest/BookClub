@@ -22,8 +22,13 @@ public class Rating extends Model {
     @JoinColumn(name = "book", referencedColumnName = "id")
     public Book book;
 
-    @Constraints.Max(10)
+    @Constraints.Max(5)
+    @Constraints.Min(1)
     public int rating;
+
+    public Rating(int rating) {
+        this.rating = rating;
+    }
 
     public static Finder<String, Rating> find = new Finder<String, Rating>(
             String.class, Rating.class
