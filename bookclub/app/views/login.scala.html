@@ -12,9 +12,9 @@
 
 
         <h1>Залогуйтесь</h1>
-        <input type="text" name="login" placeholder="Login" value="@form("login").value">
-        <input type="password" name="password" placeholder="Password">
-        <button type="submit">Login</button>
+        <input type="text" name="login" placeholder="Логін" value="@form("login").value">
+        <input type="password" name="password" placeholder="Пароль">
+        <button type="submit">Вхід</button>
         @if(form.hasGlobalErrors) {
             <p class="error">
                 @form.globalError.message

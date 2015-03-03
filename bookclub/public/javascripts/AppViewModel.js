@@ -3,10 +3,11 @@ function UserModel(model) {
     self.login = model.login;
 }
 
-function BookModel(name, author) {
+function BookModel(model) {
     var self = this;
-    self.name = name;
-    self.author = author;
+    self.id = model.id;
+    self.name = model.name;
+    self.author = model.author;
 }
 
 function AppViewModel() {
@@ -22,6 +23,17 @@ function AppViewModel() {
         success: function (data) {
             $.each(data, function(index, element) {
                 self.users.push(new UserModel(element));
+            });
+        }
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/books',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data, function(index, element) {
+                self.books.push(new BookModel(element));
             });
         }
     });

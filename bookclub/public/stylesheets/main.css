@@ -1,14 +1,24 @@
 .action-bar {
     height: 25px;
     border-bottom: 2px solid dodgerblue;
+    width: 100%;
+}
+
+.action-bar-logout {
+    float: right;
+}
+
+.welcome {
+    float: left;
 }
 
 .users {
-     display: inherit;
-     width: 50%;
-     border: 1px solid aquamarine;
-     padding: 5px;
- }
+    float: left;
+    width: 49%;
+    height: 100%;
+    border: 1px solid aquamarine;
+    padding: 5px;
+}
 
 .user {
     color: black;
@@ -32,5 +42,57 @@
     font-family: cursive;
     text-align: center;
     display: block;
+    margin: auto;
+}
+
+.books {
+    float: right;
+    width: 49%;
+    height: 100%;
+    border: 1px solid aquamarine;
+    padding: 5px;
+}
+
+.book {
+    color: black;
+    background: blanchedalmond;
+    padding: 2px;
+    margin: 2px;
+    height: 100px;
+}
+
+.book-cover {
+    display: inline-block;
+    float: left;
+    background: url(/assets/images/book.png) no-repeat left center;
+    background-size: cover;
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+}
+
+.book-info {
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 80px;
+    margin: 10px;
+}
+
+.book-name {
+    width: 100%;
+    float: left;
+    font-size: 18px;
+    font-family: cursive;
+    text-align: left;
+    margin: auto;
+}
+
+.book-author {
+    width: 100%;
+    float: left;
+    font-size: 12px;
+    font-family: cursive;
+    text-align: left;
     margin: auto;
 }

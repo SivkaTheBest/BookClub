@@ -17,7 +17,7 @@ public class RatingController extends Controller {
         User user = User.find.byId(session().get("login"));
 
         if(!(user == null || book == null || userRating == 0)) {
-            Rating rating = new Rating(userRating);
+            Rating rating = new Rating(user, book, userRating);
 
             book.ratings.add(rating);
             user.ratings.add(rating);

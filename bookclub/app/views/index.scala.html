@@ -11,9 +11,9 @@
     </head>
 
     <body>
-
         <div class="action-bar">
-            <a href="@routes.Application.logout()">Вийти</a>
+            <a class="action-bar-logout" href="@routes.Application.logout()">Вийти</a>
+            <a class="action-bar-welcome" href="@routes.Application.index()">Книжковий клуб</a>
         </div>
 
         <div class="users">
@@ -25,6 +25,21 @@
                 </div>
             <!-- /ko -->
             <input type="button" value="Додати користувача"/>
+        </div>
+
+        <div class="books">
+            <div>Книги</div>
+                <!-- ko foreach: books -->
+                    <div class="book">
+                        <div class="book-cover"></div>
+                        <div class="book-info">
+                            <div class="book-name" data-bind="text: id"> </div>
+                            <div class="book-name" data-bind="text: name"> </div>
+                            <div class="book-author" data-bind="text: author"> </div>
+                        </div>
+                    </div>
+                <!-- /ko -->
+            <input type="button" value="Додати книгу"/>
         </div>
     </body>
 </html>

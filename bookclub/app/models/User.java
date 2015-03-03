@@ -32,6 +32,10 @@ public class User extends Model {
         return User.find.where().eq("login", login).eq("password", password).findUnique();
     }
 
+    public static User findByLogin(String login) {
+        return User.find.where().eq("login", login).findUnique();
+    }
+    
     public static Finder<String, User> find = new Finder<String, User>(
             String.class, User.class
     );
