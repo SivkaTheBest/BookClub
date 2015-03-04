@@ -15,8 +15,6 @@ public class BookController extends Controller {
     public static Result getBooks() {
         Gson gson = new Gson();
 
-        User user = User.findByLogin(session().get("login"));
-        List<Rating> ratings = Rating.findByUser(user);
         List<BookFormBean> list = BookFormBean.from(Book.find.all());
 
         return ok(gson.toJson(list));

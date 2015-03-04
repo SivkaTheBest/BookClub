@@ -16,11 +16,11 @@ public class Rating extends Model {
     public Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "login")
+    @JoinColumn(name = "user_login")
     public User user;
 
     @ManyToOne
-    @JoinColumn(name = "book", referencedColumnName = "id")
+    @JoinColumn(name = "book_id")
     public Book book;
 
     @Constraints.Max(5)

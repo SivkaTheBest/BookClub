@@ -1,6 +1,8 @@
 package controllers;
 
 
+import com.google.gson.Gson;
+import formbeans.RatingFormBean;
 import models.Book;
 import models.Rating;
 import models.User;
@@ -22,7 +24,25 @@ public class RatingController extends Controller {
             book.ratings.add(rating);
             user.ratings.add(rating);
 
+            book.save();
+            user.save();
+
             rating.save();
+        } else {
+            badRequest();
+        }
+
+        return ok();
+    }
+
+    public static Result ratings() {
+
+        User user = User.find.byId(session().get("login"));
+        Gson gson = new Gson();
+
+        if(user != null) {
+            List<Rating> ratings = Rating.findByUser(user);
+            return ok(gson.toJson(RatingFormBean.from(ratings)));
         } else {
             badRequest();
         }
