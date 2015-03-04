@@ -11,9 +11,9 @@ public class Global extends GlobalSettings {
     public void onStart(Application app) {
         Map data = (Map)Yaml.load("initial-data.yml");
 
+        Ebean.delete(Rating.find.all());
         Ebean.delete(User.find.all());
         Ebean.delete(Book.find.all());
-        Ebean.delete(Rating.find.all());
 
         Ebean.save((Collection) (data.get("users")));
         Ebean.save((Collection) (data.get("books")));

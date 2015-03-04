@@ -8,6 +8,8 @@ function BookModel(model) {
     self.id = model.id;
     self.name = model.name;
     self.author = model.author;
+    self.userRating = model.userRating;
+    self.rating = model.rating;
 }
 
 function AppViewModel() {

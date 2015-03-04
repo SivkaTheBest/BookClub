@@ -33,9 +33,11 @@
                     <div class="book">
                         <div class="book-cover"></div>
                         <div class="book-info">
-                            <div class="book-name" data-bind="text: id"> </div>
+                            <div class="book-author" data-bind="text: id"> </div>
                             <div class="book-name" data-bind="text: name"> </div>
                             <div class="book-author" data-bind="text: author"> </div>
+                            <div class="book-author" data-bind="text: 'Загальний рейтинг: ' + rating"> </div>
+                            <div class="book-author" data-bind="text: 'Ваш рейтинг: ' + (userRating == 0 ? '-' : userRating)"> </div>
                         </div>
                     </div>
                 <!-- /ko -->
