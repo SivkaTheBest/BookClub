@@ -2,6 +2,7 @@ package controllers;
 
 
 import com.google.gson.Gson;
+import formbeans.BookFormBean;
 import formbeans.RatingFormBean;
 import models.Book;
 import models.Rating;
@@ -19,7 +20,7 @@ public class RatingController extends Controller {
         User user = User.find.byId(session().get("login"));
         Rating rating = Rating.findByUserAndByBook(user, book);
 
-        if(!(user == null || book == null || userRating == 0)) {
+        if(!(user == null || book == null || userRating < 1 || userRating > 5)) {
 
             if(rating == null) {
                 rating = new Rating(user, book, userRating);
@@ -29,16 +30,17 @@ public class RatingController extends Controller {
 
                 book.save();
                 user.save();
-                rating.save();
             } else {
                 rating.rating = userRating;
-                rating.save();
             }
-        } else {
-            badRequest();
-        }
 
-        return ok();
+            rating.save();
+
+            Gson gson = new Gson();
+            BookFormBean bookFormBean = BookFormBean.from(book, Rating.findByUserAndByBook(user, book), Rating.findBookTotalRating(book));
+            return ok(gson.toJson(bookFormBean));
+        }
+        return badRequest();
     }
 
     public static Result ratings() {

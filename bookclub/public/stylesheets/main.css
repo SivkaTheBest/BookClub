@@ -96,3 +96,40 @@
     text-align: left;
     margin: auto;
 }
+
+.book-rating {
+    float: left;
+    margin: auto;
+}
+
+.book-user-rating {
+    width: 16px;
+    height: 24px;
+    display: inline-block;
+    float: left;
+    font-size: 18px;
+    font-family: cursive;
+    text-align: center;
+    pointer-events: none;
+}
+
+.starRating span.chosen {
+    background-position: 0 0;
+}
+.starRating span {
+    float: left;
+    width: 24px;
+    height: 24px;
+    background-image: url(/assets/images/stars.png);
+    display: inline-block;
+    cursor: pointer;
+    background-position: -24px 0;
+}
+
+.starRating:hover span {
+    background-position: -24px 0;
+}
+
+.starRating:hover span.hoverChosen {
+    background-position: 0 0;
+}

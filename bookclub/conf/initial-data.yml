@@ -1,27 +1,50 @@
 users:
-  - !!models.User
+  - &user1 !!models.User
     login:       Kolas
     password:    secret
-  - !!models.User
+  - &user2  !!models.User
     login:       Bubno
     password:    secret
-  - !!models.User
+  - &user3 !!models.User
     login:       Yura
     password:    secret
-  - !!models.User
+  - &user4 !!models.User
     login:       Olya
     password:    secret
-  - !!models.User
+  - &user5 !!models.User
     login:       Rostik
     password:    secret
-  - !!models.User
+  - &user6 !!models.User
     login:       Ruslan
     password:    secret
 
 books:
-  - !!models.Book
+  - &book1 !!models.Book
     name:        Harry Potter
     author:      J. Rowling
-  - !!models.Book
+  - &book2 !!models.Book
     name:        Neznayka
     author:      Chuvak
+  - &book3 !!models.Book
+    name:        Never War
+    author:      Jh. Holdeman
+ratings:
+  - &rating1 !!models.Rating
+    user:        *user1
+    book:        *book1
+    rating:      2
+
+  - &rating2 !!models.Rating
+    user:        *user2
+    book:        *book1
+    rating:      5
+
+  - &rating3 !!models.Rating
+    user:        *user1
+    book:        *book2
+    rating:      3
+
+  - &rating4 !!models.Rating
+    user:        *user2
+    book:        *book2
+    rating:      2
