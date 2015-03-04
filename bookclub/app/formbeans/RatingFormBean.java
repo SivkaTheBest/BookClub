@@ -6,9 +6,6 @@ import models.Rating;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Mykola on 04.03.2015.
- */
 public class RatingFormBean {
 
     public int rating;

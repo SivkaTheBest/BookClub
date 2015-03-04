@@ -41,6 +41,21 @@ public class Rating extends Model {
         return Rating.find.where().eq("user", user).findList();
     }
 
+    public static Double findBookTotalRating(Book book) {
+        List<Rating> ratings = Rating.find.where().eq("book", book).findList();
+        double totalRating = 0;
+
+        if(ratings.size() > 0) {
+            for (Rating rating : ratings) {
+                totalRating += rating.rating;
+            }
+
+            return totalRating / ratings.size();
+        } else {
+            return totalRating;
+        }
+    }
+
     public static Finder<Long, Rating> find = new Finder<Long, Rating>(
             Long.class, Rating.class
     );

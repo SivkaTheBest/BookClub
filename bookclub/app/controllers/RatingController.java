@@ -17,17 +17,23 @@ public class RatingController extends Controller {
 
         Book book = Book.find.byId(bookId);
         User user = User.find.byId(session().get("login"));
+        Rating rating = Rating.findByUserAndByBook(user, book);
 
         if(!(user == null || book == null || userRating == 0)) {
-            Rating rating = new Rating(user, book, userRating);
 
-            book.ratings.add(rating);
-            user.ratings.add(rating);
+            if(rating == null) {
+                rating = new Rating(user, book, userRating);
 
-            book.save();
-            user.save();
+                book.ratings.add(rating);
+                user.ratings.add(rating);
 
-            rating.save();
+                book.save();
+                user.save();
+                rating.save();
+            } else {
+                rating.rating = userRating;
+                rating.save();
+            }
         } else {
             badRequest();
         }

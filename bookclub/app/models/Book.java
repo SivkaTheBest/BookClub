@@ -33,5 +33,4 @@ public class Book extends Model {
     public static Finder<Long, Book> find = new Finder<Long, Book>(
             Long.class, Book.class
     );
-
 }
