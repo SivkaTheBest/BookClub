@@ -1,6 +1,8 @@
 .action-bar {
     height: 25px;
-    border-bottom: 2px solid dodgerblue;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid aquamarine;
     width: 100%;
 }
 
@@ -12,9 +14,70 @@
     float: left;
 }
 
+.action-bar-button {
+   -moz-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+   -webkit-box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+   box-shadow:inset 0px 1px 0px 0px #7a8eb9;
+   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
+   background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
+   background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
+   background:-o-linear-gradient(top, #637aad 5%, #5972a7 100%);
+   background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
+   background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
+   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
+   background-color:#637aad;
+   border:1px solid #314179;
+   display:inline-block;
+   cursor:pointer;
+   color:#ffffff;
+   font-family:arial;
+   font-size:13px;
+   font-weight:bold;
+   padding:4px 12px;
+   text-decoration:none;
+}
+.action-bar-button:hover {
+    background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #5972a7), color-stop(1, #637aad));
+    background:-moz-linear-gradient(top, #5972a7 5%, #637aad 100%);
+    background:-webkit-linear-gradient(top, #5972a7 5%, #637aad 100%);
+    background:-o-linear-gradient(top, #5972a7 5%, #637aad 100%);
+    background:-ms-linear-gradient(top, #5972a7 5%, #637aad 100%);
+    background:linear-gradient(to bottom, #5972a7 5%, #637aad 100%);
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5972a7', endColorstr='#637aad',GradientType=0);
+    background-color:#5972a7;
+}
+.action-bar-button:active {
+    position:relative;
+    top:1px;
+}
+
+
+/*
+.action-bar-button {
+    color: black;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 20px;
+    border: 1px solid aquamarine;
+}*/
+/*
+.action-bar-button:hover {
+    border: 1px solid deepskyblue;
+}*/
+
+.section-header {
+    font-family: Arial;
+    text-align: left;
+    font-size: 14px;
+    background: peachpuff;
+    width: 100%;
+    border-bottom: 1px solid aliceblue;
+}
+
 .users {
+    display: inline-block;
     float: left;
-    width: 49%;
+    width: 245px;
     height: 100%;
     border: 1px solid aquamarine;
     padding: 5px;
@@ -24,10 +87,10 @@
     color: black;
     background: blanchedalmond;
     padding: 2px;
-    margin: 2px;
+    margin: 2px 0px;
     display: inline-block;
-    width: 100px;
-    height: 100px;
+    width: 75px;
+    height: 75px;
 }
 
 .user-ava {
@@ -38,7 +101,7 @@
 }
 
 .user-label {
-    font-size: 18px;
+    font-size: 12px;
     font-family: cursive;
     text-align: center;
     display: block;
@@ -46,8 +109,9 @@
 }
 
 .books {
-    float: right;
-    width: 49%;
+    display: inline-block;
+    margin: 0px 10px;
+    width: 60%;
     height: 100%;
     border: 1px solid aquamarine;
     padding: 5px;
@@ -57,7 +121,7 @@
     color: black;
     background: blanchedalmond;
     padding: 2px;
-    margin: 2px;
+    margin: 2px 0px;
     height: 100px;
 }
 

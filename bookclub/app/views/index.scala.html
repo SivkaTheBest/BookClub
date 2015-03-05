@@ -12,23 +12,26 @@
 
     <body>
         <div class="action-bar">
-            <a class="action-bar-logout" href="@routes.Application.logout()">Вийти</a>
-            <a class="action-bar-welcome" href="@routes.Application.index()">Книжковий клуб</a>
+            <a class="action-bar-button action-bar-logout" href="@routes.Application.logout()">Вийти</a>
+            <a class="action-bar-button action-bar-welcome" href="@routes.Application.index()">Книжковий клуб</a>
         </div>
 
         <div class="users">
-            <div>Користувачі</div>
+            <div class="section-header">Користувачі</div>
             <!-- ko foreach: users -->
                 <div class="user">
                     <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
                     <span class="user-label" data-bind="text: login"> </span>
                 </div>
             <!-- /ko -->
-            <input type="button" value="Додати користувача"/>
+        <div class="user">
+            <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
+            <span class="user-label" data-bind="click: function(){console.log('add user')}">+</span>
+        </div>
         </div>
 
         <div class="books">
-            <div>Книги</div>
+            <div class="section-header">Книги</div>
             <!-- ko foreach: bookViewModel.books -->
                 <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
                     <div class="book-cover"></div>
