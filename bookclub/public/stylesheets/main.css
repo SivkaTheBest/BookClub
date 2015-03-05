@@ -102,15 +102,35 @@
     margin: auto;
 }
 
-.book-user-rating {
+.book-delete-rating {
     width: 16px;
-    height: 24px;
+    height: 16px;
     display: inline-block;
-    float: left;
-    font-size: 18px;
-    font-family: cursive;
     text-align: center;
-    pointer-events: none;
+    float: left;
+    margin: 4px;
+    cursor: pointer;
+    background: #de2525;
+    background-image: -webkit-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: -moz-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: -ms-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: -o-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: linear-gradient(to bottom, #de2525, #bd1c1c);
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 8px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.book-delete-rating:hover {
+    background: #fc3c3c;
+    background-image: -webkit-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: -moz-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: -ms-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: -o-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: linear-gradient(to bottom, #fc3c3c, #d93434);
 }
 
 .starRating span.chosen {

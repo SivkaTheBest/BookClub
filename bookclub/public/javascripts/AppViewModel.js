@@ -11,6 +11,16 @@ function BookModel(model) {
     self.userRating = ko.observable(model.userRating);
     self.rating = ko.observable(model.rating);
 
+    self.showDetails = ko.observable(false);
+
+    self.enableDetails = function() {
+        self.showDetails(true);
+    };
+
+    self.disableDetails = function() {
+        self.showDetails(false);
+    }
+
     self.save = function() {
         $.ajax({
             type: 'GET',
@@ -19,6 +29,21 @@ function BookModel(model) {
             data: {
                 bookId: self.id,
                 userRating: self.userRating()
+            },
+            success: function (bookModel) {
+                self.userRating(bookModel.userRating);
+                self.rating(bookModel.rating);
+            }
+        });
+    }
+
+    self.deleteRating = function() {
+        $.ajax({
+            type: 'GET',
+            url: '/deleteRating',
+            dataType: 'json',
+            data: {
+                bookId: self.id
             },
             success: function (bookModel) {
                 self.userRating(bookModel.userRating);
@@ -73,15 +98,10 @@ ko.bindingHandlers.starRating = {
     }
 };
 
-function RatingModel(rating) {
-    this.points = ko.observable(rating);
-}
-
 function BooksViewModel() {
     var self = this;
 
     self.books = ko.observableArray([]);
-    self.ratings = [];
 
     $.ajax({
         type: 'GET',
@@ -90,10 +110,6 @@ function BooksViewModel() {
         success: function (data) {
             $.each(data, function(index, element) {
                 self.books.push(new BookModel(element));
-            });
-
-            $.each(data, function(index, element) {
-                self.ratings.push(new RatingModel(element.rating));
             });
         }
     });

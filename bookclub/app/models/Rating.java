@@ -59,4 +59,28 @@ public class Rating extends Model {
     public static Finder<Long, Rating> find = new Finder<Long, Rating>(
             Long.class, Rating.class
     );
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Rating rating1 = (Rating) o;
+
+        if (rating != rating1.rating) return false;
+        if (!book.equals(rating1.book)) return false;
+        if (!user.equals(rating1.user)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + user.hashCode();
+        result = 31 * result + book.hashCode();
+        result = 31 * result + rating;
+        return result;
+    }
 }

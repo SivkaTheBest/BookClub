@@ -29,18 +29,20 @@
 
         <div class="books">
             <div>Книги</div>
-                <!-- ko foreach: bookViewModel.books -->
-                    <div class="book">
-                        <div class="book-cover"></div>
-                        <div class="book-info">
-                            <div class="book-name" data-bind="text: name"> </div>
-                            <div class="book-author" data-bind="text: author"> </div>
-                            <div class="book-author" data-bind="text: 'Загальний рейтинг: ' + rating()"> </div>
-                            <div class="book-rating" data-bind="starRating: userRating, click: save()"> </div>
-                            <div class="book-user-rating" data-bind="text: userRating() == 0 ? '-' : userRating()"> </div>
+            <!-- ko foreach: bookViewModel.books -->
+                <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
+                    <div class="book-cover"></div>
+                    <div class="book-info" >
+                        <div class="book-name" data-bind="text: name"></div>
+                        <div class="book-author" data-bind="text: author"> </div>
+                        <div class="book-author" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </div>
+                        <div class="book-rating-container" ">
+                            <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
+                            <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">X</div>
                         </div>
                     </div>
-                <!-- /ko -->
+                </div>
+            <!-- /ko -->
             <input type="button" value="Додати книгу"/>
         </div>
     </body>

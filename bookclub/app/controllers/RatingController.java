@@ -9,9 +9,11 @@ import models.Rating;
 import models.User;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Security;
 
 import java.util.List;
 
+@Security.Authenticated(Secured.class)
 public class RatingController extends Controller {
 
     public static Result rateBook(Long bookId, int userRating) {
@@ -40,6 +42,30 @@ public class RatingController extends Controller {
             BookFormBean bookFormBean = BookFormBean.from(book, Rating.findByUserAndByBook(user, book), Rating.findBookTotalRating(book));
             return ok(gson.toJson(bookFormBean));
         }
+
+        return badRequest();
+    }
+
+    public static Result deleteRating(Long bookId) {
+        Book book = Book.find.byId(bookId);
+        User user = User.find.byId(session().get("login"));
+
+        if(user != null && book != null) {
+            Rating rating = Rating.findByUserAndByBook(user, book);
+            if(rating != null) {
+                book.ratings.remove(rating);
+                user.ratings.remove(rating);
+                rating.delete();
+
+                Gson gson = new Gson();
+                BookFormBean bookFormBean = BookFormBean.from(book, Rating.findByUserAndByBook(user, book), Rating.findBookTotalRating(book));
+                return ok(gson.toJson(bookFormBean));
+
+            } else {
+                return badRequest();
+            }
+        }
+
         return badRequest();
     }
 
@@ -51,10 +77,8 @@ public class RatingController extends Controller {
         if(user != null) {
             List<Rating> ratings = Rating.findByUser(user);
             return ok(gson.toJson(RatingFormBean.from(ratings)));
-        } else {
-            badRequest();
         }
 
-        return ok();
+        return badRequest();
     }
 }

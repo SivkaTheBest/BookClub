@@ -3,7 +3,6 @@ package controllers;
 import com.google.gson.Gson;
 import formbeans.BookFormBean;
 import models.Book;
-import models.Rating;
 import models.User;
 import play.mvc.*;
 
