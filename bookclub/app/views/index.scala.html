@@ -39,9 +39,9 @@
                         <div class="book-cover"></div>
                         <div class="book-info" >
                             <div class="book-name" data-bind="text: name"></div>
-                            <div class="book-author" data-bind="text: author"> </div>
-                            <div class="book-author" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </div>
-                            <div class="book-rating-container" ">
+                            <span class="book-author" data-bind="text: author"> </span>
+                            <span class="book-rating-info" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </span>
+                            <div class="book-rating-container" data-bind="css: { 'book-rating-container-active': showDetails() }">
                                 <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
                                 <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">X</div>
                             </div>
