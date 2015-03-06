@@ -12,41 +12,44 @@
 
     <body>
         <div class="action-bar">
-            <a class="action-bar-button action-bar-logout" href="@routes.Application.logout()">Вийти</a>
-            <a class="action-bar-button action-bar-welcome" href="@routes.Application.index()">Книжковий клуб</a>
+            <div class="center">
+                <a class="action-bar-button action-bar-logout" href="@routes.Application.logout()">Вийти</a>
+                <a class="action-bar-button action-bar-welcome" href="@routes.Application.index()">Книжковий клуб</a>
+            </div>
         </div>
+        <div class="center">
+            <div class="users">
+                <div class="section-header">Користувачі</div>
+                <!-- ko foreach: users -->
+                    <div class="user">
+                        <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
+                        <span class="user-label" data-bind="text: login"> </span>
+                    </div>
+                <!-- /ko -->
+            <div class="user">
+                <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
+                <span class="user-label" data-bind="click: function(){console.log('add user')}">+</span>
+            </div>
+            </div>
 
-        <div class="users">
-            <div class="section-header">Користувачі</div>
-            <!-- ko foreach: users -->
-                <div class="user">
-                    <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
-                    <span class="user-label" data-bind="text: login"> </span>
-                </div>
-            <!-- /ko -->
-        <div class="user">
-            <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
-            <span class="user-label" data-bind="click: function(){console.log('add user')}">+</span>
-        </div>
-        </div>
-
-        <div class="books">
-            <div class="section-header">Книги</div>
-            <!-- ko foreach: bookViewModel.books -->
-                <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
-                    <div class="book-cover"></div>
-                    <div class="book-info" >
-                        <div class="book-name" data-bind="text: name"></div>
-                        <div class="book-author" data-bind="text: author"> </div>
-                        <div class="book-author" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </div>
-                        <div class="book-rating-container" ">
-                            <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
-                            <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">X</div>
+            <div class="books">
+                <div class="section-header">Книги</div>
+                <!-- ko foreach: bookViewModel.books -->
+                    <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
+                        <div class="book-cover"></div>
+                        <div class="book-info" >
+                            <div class="book-name" data-bind="text: name"></div>
+                            <div class="book-author" data-bind="text: author"> </div>
+                            <div class="book-author" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </div>
+                            <div class="book-rating-container" ">
+                                <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
+                                <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">X</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <!-- /ko -->
-            <input type="button" value="Додати книгу"/>
+                <!-- /ko -->
+                <input type="button" value="Додати книгу"/>
+            </div>
         </div>
     </body>
 </html>
