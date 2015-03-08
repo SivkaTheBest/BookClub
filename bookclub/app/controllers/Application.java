@@ -16,7 +16,7 @@ public class Application extends Controller {
 
         public String validate() {
             if (User.authenticate(login, password) == null) {
-                return "Invalid user or password";
+                return "Неправильні логін чи пароль";
             }
             return null;
         }
@@ -28,7 +28,11 @@ public class Application extends Controller {
     }
 
     public static Result login() {
-        return ok(login.render(form(Login.class)));
+        if(session().get("login") == null) {
+            return ok(login.render(form(Login.class)));
+        } else {
+            return redirect(routes.Application.index());
+        }
     }
 
     public static Result logout() {

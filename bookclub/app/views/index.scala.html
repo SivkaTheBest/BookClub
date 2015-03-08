@@ -4,6 +4,8 @@
     <head>
         <title>Книжковий клюб</title>
         <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/books.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/header.css")">
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/knockout-3.3.0.js")" type="text/javascript"></script>
@@ -18,38 +20,65 @@
             </div>
         </div>
         <div class="center">
-            <div class="users">
-                <div class="section-header">Користувачі</div>
-                <!-- ko foreach: users -->
-                    <div class="user">
-                        <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
-                        <span class="user-label" data-bind="text: login"> </span>
-                    </div>
-                <!-- /ko -->
-            <div class="user">
-                <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
-                <span class="user-label" data-bind="click: function(){console.log('add user')}">+</span>
-            </div>
-            </div>
+            <div data-bind="visible: !userInfoViewModel.showUserInfo()">
+                <div class="users">
+                    <div class="section-header">Користувачі</div>
+                    <!-- ko foreach: users -->
+                        <div class="user" data-bind="click: AppModel.userInfoViewModel.getInfo.bind($data, login)">
+                            <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
+                            <span class="user-label" data-bind="text: login"> </span>
+                        </div>
+                    <!-- /ko -->
+                <div class="user">
+                    <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
+                    <span class="user-label" data-bind="click: function(){console.log('add user')}">+</span>
+                </div>
+                </div>
 
-            <div class="books">
-                <div class="section-header">Книги</div>
-                <!-- ko foreach: bookViewModel.books -->
-                    <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
-                        <div class="book-cover"></div>
-                        <div class="book-info" >
-                            <div class="book-name" data-bind="text: name"></div>
-                            <span class="book-author" data-bind="text: author"> </span>
-                            <span class="book-rating-info" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </span>
-                            <div class="book-rating-container" data-bind="css: { 'book-rating-container-active': showDetails() }">
-                                <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
-                                <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">X</div>
+                <div class="books">
+                    <div class="section-header">Книги</div>
+                    <!-- ko foreach: bookViewModel.books -->
+                        <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
+                            <div class="book-cover"></div>
+                            <div class="book-info" >
+                                <div class="book-name" data-bind="text: name"></div>
+                                <span class="book-author" data-bind="text: author"> </span>
+                                <span class="book-rating-info" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </span>
+                                <div class="book-rating-container" data-bind="css: { 'book-rating-container-active': showDetails() }">
+                                    <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
+                                    <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">×</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <!-- /ko -->
-                <input type="button" value="Додати книгу"/>
+                    <!-- /ko -->
+                    <input class="input-button" type="button" value="Додати книгу"/>
+                </div>
             </div>
+
+            <div class="user-info" data-bind="visible: userInfoViewModel.showUserInfo(), with: AppModel.userInfoViewModel">
+                <div class="section-header">
+                    <span data-bind="text: login"></span>
+                    <span class="user-current-hint" data-bind="visible: isYou()">(Ви)</span>
+                    <div class="box-close" data-bind="click: showUserInfo.bind($data, false)">×</div>
+                </div>
+
+                <div class="user-statistic" data-bind="visible: total() != 0">
+                    <div class="user-statistic-negative" data-bind="style: {width: negative() / total() * 100 + '%'}">
+                        <div class="user-statistic-label" data-bind="visible: negative() !=0, text: negative()"></div>
+                    </div>
+                    <div class="user-statistic-neutral" data-bind="style: {width: neutral() / total() * 100 + '%'}">
+                        <div class="user-statistic-label" data-bind="visible: neutral() !=0, text: neutral()"></div>
+                    </div>
+                    <div class="user-statistic-positive" data-bind="style: {width: positive() / total() * 100 + '%'}">
+                        <div class="user-statistic-label" data-bind="visible: positive() !=0, text: positive()"></div>
+                    </div>
+                </div>
+                <div class="user-info-container">
+                    <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
+                    <span class="user-label" data-bind="text: login"></span>
+                </div>
+            </div>
+
         </div>
     </body>
 </html>

@@ -1,0 +1,140 @@
+.books {
+    float: right;
+    overflow: hidden;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    margin-top: 10px;
+    display: inline-block;
+    width: 70%;
+    height: 100%;
+}
+
+.book {
+    color: black;
+    border-bottom: 1px solid #d8d8d8;
+    height: 80px;
+}
+
+.book:hover {
+    background: #fafafa;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075),0 0 5px rgba(81,167,232,0.5);
+}
+
+.book-cover {
+    display: inline-block;
+    float: left;
+    background: url(/assets/images/book.png) no-repeat left center;
+    background-size: cover;
+    height: 60px;
+    width: 60px;
+    margin: 10px 0px 10px 10px;
+}
+
+.book-info {
+    display: inline;
+    float: left;
+    width: 50%;
+    height: 60px;
+    margin: 10px;
+}
+
+.book-name {
+    float: left;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 16px;
+    color: #333;
+    font-family: Helvetica, arial;
+}
+
+.book-author {
+    float: left;
+    font-size: 12px;
+    line-height: 16px;
+    color: #999;
+    margin-left: 5px;
+    font-family: Helvetica, arial;
+}
+
+.book-rating-info {
+    width: 100%;
+    float: left;
+    font-size: 10px;
+    line-height: 20px;
+    color: #999;
+    font-family: Helvetica, arial;
+}
+
+.book-rating {
+    float: left;
+    margin: auto;
+}
+
+.book-rating-container {
+    float: left;
+    margin: auto;
+    border: 1px solid transparent;
+    border-radius: 3px;
+}
+
+.book-rating-container-active {
+    height: 18px;
+    border: 1px solid #4183c4;
+    border-radius: 9px;
+    background-color: #e4eef7;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.075),0 0 5px rgba(81,167,232,0.5);
+}
+
+.book-delete-rating {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    text-align: center;
+    float: left;
+    margin: 3px;
+    cursor: pointer;
+    overflow: hidden;
+    background: #de2525;
+    background-image: -webkit-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: -moz-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: -ms-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: -o-linear-gradient(top, #de2525, #bd1c1c);
+    background-image: linear-gradient(to bottom, #de2525, #bd1c1c);
+    -webkit-border-radius: 8;
+    -moz-border-radius: 8;
+    border-radius: 6px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 11px;
+}
+
+.book-delete-rating:hover {
+    background: #fc3c3c;
+    background-image: -webkit-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: -moz-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: -ms-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: -o-linear-gradient(top, #fc3c3c, #d93434);
+    background-image: linear-gradient(to bottom, #fc3c3c, #d93434);
+}
+
+.starRating span.chosen {
+    background-position: 0 0;
+}
+.starRating span {
+    float: left;
+    width: 18px;
+    height: 18px;
+    background-image: url(/assets/images/stars.png);
+    background-size: 36px;
+    display: inline-block;
+    cursor: pointer;
+    background-position: -18px 0;
+}
+
+.starRating:hover span {
+    background-position: -18px 0;
+}
+
+.starRating:hover span.hoverChosen {
+    background-position: 0 0;
+}

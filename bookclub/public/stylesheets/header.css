@@ -1,0 +1,33 @@
+
+.action-bar {
+    height: 26px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-width: 1000px;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.action-bar-logout {
+    float: right;
+}
+
+.action-bar-welcome {
+    float: left;
+    background: url(/assets/images/logo.png) no-repeat left center;
+    background-size: auto 100%;
+    padding-left: 33px !important;
+}
+
+.action-bar-button {
+    padding: 4px 0px 4px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 20px;
+    color: #333;
+    text-decoration: none;
+    font-family: Helvetica, arial
+}
+.action-bar-button:hover {
+    color: #4183c4;
+}

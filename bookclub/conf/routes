@@ -9,6 +9,7 @@ POST        /login               controllers.Application.authenticate()
 GET         /logout              controllers.Application.logout()
 
 GET         /users               controllers.UserController.getUsers()
+GET         /user                controllers.UserController.getUserInfo(login: String)
 GET         /books               controllers.BookController.getBooks()
 GET         /rate                controllers.RatingController.rateBook(bookId: Long, userRating: Int)
 GET         /deleteRating        controllers.RatingController.deleteRating(bookId: Long)

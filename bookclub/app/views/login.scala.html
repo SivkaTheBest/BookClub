@@ -7,20 +7,23 @@
     <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
 </head>
 <body>
-
-    @helper.form(routes.Application.authenticate) {
-
-
-        <h1>Залогуйтесь</h1>
-        <input type="text" name="login" placeholder="Логін" value="@form("login").value">
-        <input type="password" name="password" placeholder="Пароль">
-        <button type="submit">Вхід</button>
-        @if(form.hasGlobalErrors) {
-            <p class="error">
-                @form.globalError.message
-            </p>
-        }
-    }
+    <div class="center">
+        <div class="login-form">
+            <div class="section-header">Залогуйтесь</div>
+            <div class="input-center">
+                @helper.form(routes.Application.authenticate) {
+                    <input class="input-field" type="text" name="login" placeholder="Логін" value="@form("login").value">
+                    <input class="input-field" type="password" name="password" placeholder="Пароль">
+                    <input class="input-button" type="submit" align="center" value="Вхід"/></input>
+                    @if(form.hasGlobalErrors) {
+                        <p class="error">
+                            @form.globalError.message
+                        </p>
+                    }
+                }
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>

@@ -26,8 +26,17 @@ books:
     name:        Neznayka
     author:      Chuvak
   - &book3 !!models.Book
-    name:        Never War
+    name:        Forever War
     author:      Jh. Holdeman
+  - &book4 !!models.Book
+    name:        Night Come
+    author:      A. Azimov
+  - &book5 !!models.Book
+    name:        Monster under bed
+    author:      Lovecraft
+  - &book6 !!models.Book
+    name:        Star Wars
+    author:      Jh. Lucas
 ratings:
   - &rating1 !!models.Rating
     user:        *user1
@@ -35,16 +44,36 @@ ratings:
     rating:      2
 
   - &rating2 !!models.Rating
-    user:        *user2
-    book:        *book1
-    rating:      5
-
-  - &rating3 !!models.Rating
     user:        *user1
     book:        *book2
-    rating:      3
+    rating:      1
+
+  - &rating3 !!models.Rating
+    user:        *user2
+    book:        *book1
+    rating:      2
 
   - &rating4 !!models.Rating
     user:        *user2
     book:        *book2
+    rating:      3
+
+  - &rating5 !!models.Rating
+    user:        *user2
+    book:        *book3
+    rating:      4
+
+  - &rating6 !!models.Rating
+    user:        *user2
+    book:        *book4
+    rating:      5
+
+  - &rating7 !!models.Rating
+    user:        *user2
+    book:        *book5
+    rating:      5
+
+  - &rating8 !!models.Rating
+    user:        *user2
+    book:        *book6
     rating:      2
