@@ -22,8 +22,7 @@ public class Book extends Model {
     public String author;
 
     @OneToMany(mappedBy = "book")
-    public
-    List<Rating> ratings = new LinkedList<>();
+    public List<Rating> ratings = new LinkedList<>();
 
     public Book(String name, String author) {
         this.name = name;
@@ -33,4 +32,26 @@ public class Book extends Model {
     public static Finder<Long, Book> find = new Finder<Long, Book>(
             Long.class, Book.class
     );
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Book book = (Book) o;
+
+        if (!author.equals(book.author)) return false;
+        if (!name.equals(book.name)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + author.hashCode();
+        return result;
+    }
 }

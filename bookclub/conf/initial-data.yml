@@ -37,43 +37,66 @@ books:
   - &book6 !!models.Book
     name:        Star Wars
     author:      Jh. Lucas
+
 ratings:
   - &rating1 !!models.Rating
     user:        *user1
     book:        *book1
     rating:      2
-
   - &rating2 !!models.Rating
     user:        *user1
     book:        *book2
     rating:      1
-
   - &rating3 !!models.Rating
     user:        *user2
     book:        *book1
     rating:      2
-
   - &rating4 !!models.Rating
     user:        *user2
     book:        *book2
     rating:      3
-
   - &rating5 !!models.Rating
     user:        *user2
     book:        *book3
     rating:      4
-
   - &rating6 !!models.Rating
     user:        *user2
     book:        *book4
     rating:      5
-
   - &rating7 !!models.Rating
     user:        *user2
     book:        *book5
     rating:      5
-
   - &rating8 !!models.Rating
     user:        *user2
     book:        *book6
     rating:      2
+
+lists:
+  - &list1 !!models.BookList
+    startDate:   2014-12-15 2:59:43.10
+    endDate:     2014-12-15 2:59:43.10
+
+  - &list2 !!models.BookList
+    startDate:   2001-12-15 2:59:43.10
+    endDate:     2014-12-15 2:59:43.10
+
+bookListBook:
+  - &listJoin1 !!models.BookListBook
+    bookList:    *list1
+    book:        *book1
+  - &listJoin2 !!models.BookListBook
+    bookList:    *list1
+    book:        *book2
+  - &listJoin3 !!models.BookListBook
+    bookList:    *list1
+    book:        *book3
+  - &listJoin4 !!models.BookListBook
+    bookList:    *list2
+    book:        *book3
+  - &listJoin5 !!models.BookListBook
+    bookList:    *list2
+    book:        *book4
+  - &listJoin6 !!models.BookListBook
+    bookList:    *list2
+    book:        *book5
