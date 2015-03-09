@@ -20,11 +20,11 @@
             </div>
         </div>
         <div class="center">
-            <div data-bind="visible: !userInfoViewModel.showUserInfo()">
+            <div data-bind="visible: !userInfoViewModel.userStatistic().showUserInfo()">
                 <div class="users">
                     <div class="section-header">Користувачі</div>
-                    <!-- ko foreach: users -->
-                        <div class="user" data-bind="click: AppModel.userInfoViewModel.getInfo.bind($data, login)">
+                    <!-- ko foreach: userInfoViewModel.users -->
+                        <div class="user" data-bind="click: AppModel.userInfoViewModel.userStatistic().getInfo.bind($data, login)">
                             <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
                             <span class="user-label" data-bind="text: login"> </span>
                         </div>
@@ -55,28 +55,41 @@
                 </div>
             </div>
 
-            <div class="user-info" data-bind="visible: userInfoViewModel.showUserInfo(), with: AppModel.userInfoViewModel">
+            <div class="user-info" data-bind="visible: userInfoViewModel.userStatistic().showUserInfo(), with: AppModel.userInfoViewModel.userStatistic">
                 <div class="section-header">
                     <span data-bind="text: login"></span>
                     <span class="user-current-hint" data-bind="visible: isYou()">(Ви)</span>
                     <div class="box-close" data-bind="click: showUserInfo.bind($data, false)">×</div>
                 </div>
 
-                <div class="user-statistic" data-bind="visible: total() != 0">
-                    <div class="user-statistic-negative" data-bind="style: {width: negative() / total() * 100 + '%'}">
-                        <div class="user-statistic-label" data-bind="visible: negative() !=0, text: negative()"></div>
-                    </div>
-                    <div class="user-statistic-neutral" data-bind="style: {width: neutral() / total() * 100 + '%'}">
-                        <div class="user-statistic-label" data-bind="visible: neutral() !=0, text: neutral()"></div>
-                    </div>
-                    <div class="user-statistic-positive" data-bind="style: {width: positive() / total() * 100 + '%'}">
-                        <div class="user-statistic-label" data-bind="visible: positive() !=0, text: positive()"></div>
-                    </div>
-                </div>
                 <div class="user-info-container">
                     <img class="user-ava" src="@routes.Assets.at("images/user.png")"></img>
-                    <span class="user-label" data-bind="text: login"></span>
                 </div>
+
+                <div class="user-info-values-container">
+                    <div class="user-statistic" data-bind="visible: total() != 0">
+                        <div class="user-statistic-negative" data-bind="style: {width: negative() / total() * 100 + '%'}">
+                            <div class="user-statistic-negative-border"></div>
+                            <div class="user-statistic-label" data-bind="visible: negative() !=0, text: negative()"></div>
+                        </div>
+                        <div class="user-statistic-neutral" data-bind="style: {width: neutral() / total() * 100 + '%'}">
+                            <div class="user-statistic-neutral-border"></div>
+                            <div class="user-statistic-label" data-bind="visible: neutral() !=0, text: neutral()"></div>
+                        </div>
+                        <div class="user-statistic-positive" data-bind="style: {width: positive() / total() * 100 + '%'}">
+                            <div class="user-statistic-positive-border"></div>
+                            <div class="user-statistic-label" data-bind="visible: positive() !=0, text: positive()"></div>
+                        </div>
+                    </div>
+
+                    <span class="user-info-label">Користувач:</span>
+                    <span data-bind="text: login" class="user-info-value"></span>
+                    <span class="user-info-label">Прочитав книг:</span>
+                    <span data-bind="text: total" class="user-info-value"></span>
+                    <span class="user-info-label">Середня оцінка:</span>
+                    <span data-bind="text: average" class="user-info-value"></span>
+                </div>
+
             </div>
 
         </div>

@@ -105,6 +105,7 @@ body {
     overflow: hidden;
     border: 1px solid #d8d8d8;
     border-radius: 3px;
+    padding: 5px;
     margin: 10px;
     display: inline-block;
     width: 100px;
@@ -113,15 +114,16 @@ body {
 
 .user-statistic {
     width: 100%;
-    height: 10px;
+    height: 16px;
     margin-bottom: 10px;
     float: left;
 }
 
 .user-statistic-negative, .user-statistic-positive, .user-statistic-neutral {
     display: inline-block;
+    position: relative;
     float: left;
-    height: 20px;
+    height: 100%;
 }
 
 .user-statistic-negative {
@@ -140,12 +142,73 @@ body {
     display: inline-block;
     float: left;
     margin-left: 10px;
-    margin-top: 2px;
     font-size: 12px;
     font-weight: bold;
     line-height: 16px;
     color: #333;
     font-family: Helvetica, arial;
+}
+.user-statistic-positive-border,
+.user-statistic-negative-border,
+.user-statistic-neutral-border {
+    position: absolute;
+    display: block;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+.user-statistic-positive-border{
+    border: 1px solid chartreuse;
+}
+
+.user-statistic-negative-border{
+    border: 1px solid #ff7069;
+}
+
+.user-statistic-neutral-border {
+    border: 1px solid #feff6d;
+}
+
+.user-statistic-positive-border:hover{
+    border: 1px solid #00d500;
+}
+
+.user-statistic-negative-border:hover{
+    border: 1px solid #d60000;
+}
+
+.user-statistic-neutral-border:hover{
+    border: 1px solid orange;
+}
+
+.user-info-values-container {
+    float: left;
+    overflow: hidden;
+    border: 1px solid #d8d8d8;
+    border-radius: 3px;
+    padding: 5px;
+    margin: 10px 10px 10px 0px;
+    display: inline-block;
+    height: 100px;
+    width: 250px;
+}
+
+.user-info-label, .user-info-value {
+    float: left;
+    color: #333;
+    font-family: Arial;
+    text-align: left;
+    font-size: 12px;
+    line-height: 20px;
+    margin-left: 5px;
+    font-weight: bold;
+}
+
+.user-info-label {
+    width: 50%;
+    font-weight: normal;
 }
 
 .box-close {

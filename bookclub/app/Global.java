@@ -1,6 +1,4 @@
-import models.Book;
-import models.Rating;
-import models.User;
+import models.*;
 import play.*;
 import play.libs.*;
 import com.avaje.ebean.Ebean;
@@ -11,6 +9,8 @@ public class Global extends GlobalSettings {
     public void onStart(Application app) {
         Map data = (Map)Yaml.load("initial-data.yml");
 
+        Ebean.delete(BookListBook.find.all());
+        Ebean.delete(BookList.find.all());
         Ebean.delete(Rating.find.all());
         Ebean.delete(User.find.all());
         Ebean.delete(Book.find.all());

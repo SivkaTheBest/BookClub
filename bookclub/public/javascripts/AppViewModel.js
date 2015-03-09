@@ -115,7 +115,7 @@ function BooksViewModel() {
     });
 }
 
-function UserInfoViewModel() {
+function UserStatisticViewModel() {
     var self = this;
 
     self.login = ko.observable("");
@@ -128,7 +128,6 @@ function UserInfoViewModel() {
     self.showUserInfo = ko.observable(false);
 
     self.getInfo = function(login) {
-        console.log('ololo');
         $.ajax({
             type: 'GET',
             url: '/user',
@@ -150,11 +149,10 @@ function UserInfoViewModel() {
     }
 }
 
-function AppViewModel() {
+function UserInfoViewModel() {
     var self = this;
 
-    self.bookViewModel = new BooksViewModel();
-    self.userInfoViewModel = new UserInfoViewModel();
+    self.userStatistic = ko.observable(new UserStatisticViewModel());
     self.users = ko.observableArray([]);
 
     $.ajax({
@@ -167,6 +165,16 @@ function AppViewModel() {
             });
         }
     });
+
+
+}
+
+function AppViewModel() {
+    var self = this;
+
+    self.bookViewModel = new BooksViewModel();
+    self.userInfoViewModel = new UserInfoViewModel();
+
 }
 
 var AppModel = new AppViewModel()
