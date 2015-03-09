@@ -19,4 +19,8 @@ public class BookList extends Model {
     @Column
     public Date endDate;
 
+    public static Finder<Long, BookList> find = new Finder<Long, BookList>(
+            Long.class, BookList.class
+    );
+
 }

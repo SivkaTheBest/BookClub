@@ -18,5 +18,7 @@ public class Global extends GlobalSettings {
         Ebean.save((Collection) (data.get("users")));
         Ebean.save((Collection) (data.get("books")));
         Ebean.save((Collection) (data.get("ratings")));
+        Ebean.save((Collection) (data.get("lists")));
+        Ebean.save((Collection) (data.get("bookListBook")));
     }
 }

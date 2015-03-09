@@ -6,6 +6,8 @@ import models.User;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class BookFormBean {
 
@@ -24,21 +26,19 @@ public class BookFormBean {
     }
 
     public static List<BookFormBean> from(List<Book> list, Rating userRating, Double rating) {
-        List<BookFormBean> result = new ArrayList<>();
-
-        for (Book book: list) {
-            result.add(from(book, userRating, rating));
-        }
+        List<BookFormBean> result = list.stream().map(book -> from(book, userRating, rating)).collect(Collectors.toList());
 
         return  result;
     }
 
     public static List<BookFormBean> from(List<Book> list, User user) {
-        List<BookFormBean> result = new ArrayList<>();
+        List<BookFormBean> result = list.stream().map(book -> from(book, Rating.findByUserAndByBook(user, book), Rating.findBookTotalRating(book))).collect(Collectors.toList());
 
-        for (Book book: list) {
-            result.add(from(book, Rating.findByUserAndByBook(user, book), Rating.findBookTotalRating(book)));
-        }
+        return  result;
+    }
+
+    public static List<BookFormBean> from(Set<Book> books, User user) {
+        List<BookFormBean> result = books.stream().map(book -> from(book, Rating.findByUserAndByBook(user, book), Rating.findBookTotalRating(book))).collect(Collectors.toList());
 
         return  result;
     }

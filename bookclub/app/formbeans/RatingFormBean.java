@@ -5,6 +5,7 @@ import models.Rating;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class RatingFormBean {
 
@@ -19,11 +20,7 @@ public class RatingFormBean {
     }
 
     public static List<RatingFormBean> from(List<Rating> list) {
-        List<RatingFormBean> result = new ArrayList<>();
-
-        for (Rating rating: list) {
-            result.add(from(rating));
-        }
+        List<RatingFormBean> result = list.stream().map(RatingFormBean::from).collect(Collectors.toList());
 
         return  result;
     }

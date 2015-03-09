@@ -21,4 +21,8 @@ public class BookListBook extends Model {
         this.bookList = bookList;
         this.book = book;
     }
+
+    public static Finder<Long, BookListBook> find = new Finder<Long, BookListBook>(
+            Long.class, BookListBook.class
+    );
 }
