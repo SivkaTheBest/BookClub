@@ -110,13 +110,46 @@ function BooksViewModel() {
     });
 }
 
+function BookList(model, books) {
+    var self = this;
+
+    self.startDate = model.startDate;
+    self.endDate = model.endDate;
+    self.books = ko.observableArray([]);
+
+    $.each(model.bookIds, function(index, element) {
+        self.books.push(books.getItem(element));
+    });
+}
+
+function BookListViewModel() {
+    var self = this;
+    var books = new HashTable();
+    self.bookLists = ko.observableArray([]);
+
+    $.ajax({
+        type: 'GET',
+        url: '/lists',
+        dataType: 'json',
+        success: function (data) {
+            $.each(data.books, function(index, element) {
+                var book = new BookModel(element);
+                books.setItem(book.id, new BookModel(element));
+            });
+
+            $.each(data.bookLists, function(index, element) {
+                self.bookLists.push(new BookList(element, books));
+            });
+        }
+    });
+}
+
 function AppViewModel() {
     var self = this;
 
     self.bookViewModel = new BooksViewModel();
     self.userInfoViewModel = new UserInfoViewModel();
-    //self.bookListViewModel = new BookListViewModel();
-
+    self.bookListViewModel = new BookListViewModel();
 }
 
 var AppModel = new AppViewModel()
