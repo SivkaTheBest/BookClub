@@ -12,7 +12,7 @@
 .book {
     color: black;
     border-bottom: 1px solid #d8d8d8;
-    height: 80px;
+    height: 46px;
 }
 
 .book:hover {
@@ -25,17 +25,17 @@
     float: left;
     background: url(/assets/images/book.png) no-repeat left center;
     background-size: cover;
-    height: 60px;
-    width: 60px;
-    margin: 10px 0px 10px 10px;
+    height: 30px;
+    width: 30px;
+    margin: 8px 0px 8px 10px;
 }
 
 .book-info {
     display: inline;
     float: left;
     width: 50%;
-    height: 60px;
-    margin: 10px;
+    height: 36px;
+    margin: 5px;
 }
 
 .book-name {
@@ -48,6 +48,7 @@
 }
 
 .book-author {
+    width: 65%;
     float: left;
     font-size: 12px;
     line-height: 16px;
@@ -57,12 +58,18 @@
 }
 
 .book-rating-info {
-    width: 100%;
-    float: left;
-    font-size: 10px;
-    line-height: 20px;
     color: #999;
+    width: 10px;
+    text-align: center;
+    float: left;
+    font-size: 12px;
+    line-height: 16px;
+    margin-left: 3px;
     font-family: Helvetica, arial;
+}
+
+.book-rating-info-active {
+    color: black;
 }
 
 .book-rating {
@@ -78,7 +85,7 @@
 }
 
 .book-rating-container-active {
-    height: 18px;
+    height: 14px;
     border: 1px solid #4183c4;
     border-radius: 9px;
     background-color: #e4eef7;
@@ -86,12 +93,12 @@
 }
 
 .book-delete-rating {
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     display: inline-block;
     text-align: center;
     float: left;
-    margin: 3px;
+    margin: 2px;
     cursor: pointer;
     overflow: hidden;
     background: #de2525;
@@ -105,7 +112,7 @@
     border-radius: 6px;
     font-family: Arial;
     color: #ffffff;
-    font-size: 11px;
+    font-size: 10px;
 }
 
 .book-delete-rating:hover {
@@ -122,17 +129,17 @@
 }
 .starRating span {
     float: left;
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
     background-image: url(/assets/images/stars.png);
-    background-size: 36px;
+    background-size: 28px;
     display: inline-block;
     cursor: pointer;
-    background-position: -18px 0;
+    background-position: -14px 0;
 }
 
 .starRating:hover span {
-    background-position: -18px 0;
+    background-position: -14px 0;
 }
 
 .starRating:hover span.hoverChosen {

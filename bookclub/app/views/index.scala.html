@@ -9,7 +9,8 @@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
         <script src="@routes.Assets.at("javascripts/jquery-1.9.0.min.js")" type="text/javascript"></script>
         <script src="@routes.Assets.at("javascripts/knockout-3.3.0.js")" type="text/javascript"></script>
-        <script src="@routes.Assets.at("javascripts/AppViewModel.js")" type="text/javascript"  defer="defer"></script>
+        <script src="@routes.Assets.at("javascripts/users.js")" type="text/javascript" defer="defer"></script>
+        <script src="@routes.Assets.at("javascripts/app.js")" type="text/javascript" defer="defer"></script>
     </head>
 
     <body>
@@ -43,9 +44,9 @@
                             <div class="book-info" >
                                 <div class="book-name" data-bind="text: name"></div>
                                 <span class="book-author" data-bind="text: author"> </span>
-                                <span class="book-rating-info" data-bind="text: 'Загальний рейтинг: ' + userRating() + '/' + rating()"> </span>
                                 <div class="book-rating-container" data-bind="css: { 'book-rating-container-active': showDetails() }">
                                     <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
+                                    <div class="book-rating-info" data-bind="css: { 'book-rating-info-active': showDetails() }, text: userRating() == 0 ? rating() : userRating()"> </div>
                                     <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">×</div>
                                 </div>
                             </div>
@@ -74,7 +75,7 @@
                             <div class="user-statistic-label" data-bind="text: negative()"></div>
                         </div>
                         <div class="user-statistic-neutral" data-bind="visible: neutral() !=0, style: {width: neutral() / total() * 100 + '%'}">
-                            <div class="user-statistic-tooltip">Середні оцінки</div>
+                            <div class="user-statistic-tooltip">Нейтральні оцінки</div>
                             <div class="user-statistic-neutral-border"></div>
                             <div class="user-statistic-label" data-bind="text: neutral()"></div>
                         </div>
