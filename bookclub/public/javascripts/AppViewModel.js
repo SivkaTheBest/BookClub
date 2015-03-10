@@ -165,8 +165,6 @@ function UserInfoViewModel() {
             });
         }
     });
-
-
 }
 
 function AppViewModel() {

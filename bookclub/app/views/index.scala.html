@@ -68,17 +68,20 @@
 
                 <div class="user-info-values-container">
                     <div class="user-statistic" data-bind="visible: total() != 0">
-                        <div class="user-statistic-negative" data-bind="style: {width: negative() / total() * 100 + '%'}">
+                        <div class="user-statistic-negative" data-bind="visible: negative() !=0, style: {width: negative() / total() * 100 + '%'}">
+                            <div class="user-statistic-tooltip">Негативні оцінки</div>
                             <div class="user-statistic-negative-border"></div>
-                            <div class="user-statistic-label" data-bind="visible: negative() !=0, text: negative()"></div>
+                            <div class="user-statistic-label" data-bind="text: negative()"></div>
                         </div>
-                        <div class="user-statistic-neutral" data-bind="style: {width: neutral() / total() * 100 + '%'}">
+                        <div class="user-statistic-neutral" data-bind="visible: neutral() !=0, style: {width: neutral() / total() * 100 + '%'}">
+                            <div class="user-statistic-tooltip">Середні оцінки</div>
                             <div class="user-statistic-neutral-border"></div>
-                            <div class="user-statistic-label" data-bind="visible: neutral() !=0, text: neutral()"></div>
+                            <div class="user-statistic-label" data-bind="text: neutral()"></div>
                         </div>
-                        <div class="user-statistic-positive" data-bind="style: {width: positive() / total() * 100 + '%'}">
+                        <div class="user-statistic-positive" data-bind="visible: positive() !=0, style: {width: positive() / total() * 100 + '%'}">
+                            <div class="user-statistic-tooltip">Позитивні оцінки</div>
                             <div class="user-statistic-positive-border"></div>
-                            <div class="user-statistic-label" data-bind="visible: positive() !=0, text: positive()"></div>
+                            <div class="user-statistic-label" data-bind="text: positive()"></div>
                         </div>
                     </div>
 
