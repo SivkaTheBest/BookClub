@@ -93,29 +93,22 @@ ko.bindingHandlers.starRating = {
     }
 };
 
-function BooksViewModel() {
-    var self = this;
-
-    self.books = ko.observableArray([]);
-
-    $.ajax({
-        type: 'GET',
-        url: '/books',
-        dataType: 'json',
-        success: function (data) {
-            $.each(data, function(index, element) {
-                self.books.push(new BookModel(element));
-            });
-        }
-    });
+ko.bindingHandlers.slide = {
+    init: function(element, valueAccessor) {},
+    update: function(element, valueAccessor) {
+        var value = valueAccessor();
+        value() ? $(element).slideDown() : $(element).slideUp();
+    }
 }
 
-function BookList(model, books) {
+function BookList(model, books, show) {
     var self = this;
 
-    self.startDate = model.startDate;
-    self.endDate = model.endDate;
+    self.startDate = ko.observable(model.startDate);
+    self.endDate = ko.observable(model.endDate);
     self.books = ko.observableArray([]);
+
+    self.show = ko.observable(show)
 
     $.each(model.bookIds, function(index, element) {
         self.books.push(books.getItem(element));
@@ -138,7 +131,7 @@ function BookListViewModel() {
             });
 
             $.each(data.bookLists, function(index, element) {
-                self.bookLists.push(new BookList(element, books));
+                self.bookLists.push(new BookList(element, books, false));
             });
         }
     });
@@ -147,7 +140,6 @@ function BookListViewModel() {
 function AppViewModel() {
     var self = this;
 
-    self.bookViewModel = new BooksViewModel();
     self.userInfoViewModel = new UserInfoViewModel();
     self.bookListViewModel = new BookListViewModel();
 }

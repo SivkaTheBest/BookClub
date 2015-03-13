@@ -39,21 +39,29 @@
 
                 <div class="books">
                     <div class="section-header">Книги</div>
-                    <!-- ko foreach: bookViewModel.books -->
-                        <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
-                            <div class="book-cover"></div>
-                            <div class="book-info" >
-                                <div class="book-name" data-bind="text: name"></div>
-                                <span class="book-author" data-bind="text: author"> </span>
-                                <div class="book-rating-container" data-bind="css: { 'book-rating-container-active': showDetails() }">
-                                    <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
-                                    <div class="book-rating-info" data-bind="css: { 'book-rating-info-active': showDetails() }, text: userRating() == 0 ? rating() : userRating()"> </div>
-                                    <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">×</div>
+                    <!-- ko foreach: bookListViewModel.bookLists -->
+                        <div class="book-list">
+                            <div class="book-list-header" data-bind="click: show.bind($data, !show()), css: {'book-list-header-active': show()}">
+                                <span class="book-list-header-label" data-bind="text: '#' + ($index() + 1) + ' ' + startDate() + ' ' + endDate()"></span>
+                            </div>
+                            <div class="book-list-content" data-bind="slide: show">
+                            <!-- ko foreach: books -->
+                                <div class="book" data-bind="event: { mouseover: enableDetails, mouseout: disableDetails }">
+                                    <div class="book-cover"></div>
+                                    <div class="book-info" >
+                                        <div class="book-name" data-bind="text: name"></div>
+                                        <span class="book-author" data-bind="text: author"> </span>
+                                        <div class="book-rating-container" data-bind="css: { 'book-rating-container-active': showDetails() }">
+                                            <div class="book-rating" data-bind="starRating: userRating, click: save"> </div>
+                                            <div class="book-rating-info" data-bind="css: { 'book-rating-info-active': showDetails() }, text: userRating() == 0 ? rating() : userRating()"> </div>
+                                            <div class="book-delete-rating" data-bind="visible: (userRating() != 0 && showDetails()), click: deleteRating">×</div>
+                                        </div>
+                                    </div>
                                 </div>
+                            <!-- /ko -->
                             </div>
                         </div>
                     <!-- /ko -->
-                    <input class="input-button" type="button" value="Додати книгу"/>
                 </div>
             </div>
 
@@ -94,9 +102,7 @@
                     <span class="user-info-label">Середня оцінка:</span>
                     <span data-bind="text: average" class="user-info-value"></span>
                 </div>
-
             </div>
-
         </div>
     </body>
 </html>
